@@ -58,4 +58,12 @@ class User extends Authenticatable
         return $this->hasMany(Complaint::class, 'user_id');
     }
 
+    /**
+     * @return HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'admin_id');
+    }
+
 }

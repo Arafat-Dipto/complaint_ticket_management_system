@@ -51,7 +51,7 @@ class AuthController extends BaseController
             return $this->success([
                 "id"         => $user->id,
                 "name"       => $user->name,
-                "email"      => $user->email,
+                "email"      => $user->email  
             ], 'User Registered Successfully');
         } catch (\Exception $e) {
             return $this->error('Error', [$e->getMessage()]);
@@ -80,6 +80,7 @@ class AuthController extends BaseController
                 "id"         => $user->id,
                 "name"       => $user->name,
                 "email"      => $user->email,
+                'roles'       => $user->roles, 
                 'privileges' => $userWithRoleAndPrivilege,
                 'token'      => $user->createToken(name: 'auth-token', abilities: $userWithRoleAndPrivilege)->plainTextToken,
             ], 'User Logged In Successfully');
